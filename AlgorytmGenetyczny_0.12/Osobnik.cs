@@ -23,5 +23,13 @@ namespace AlgorytmGenetyczny_0._12
             this.y = -2 + 4 * rnd.NextDouble();
             this.f = this.x + this.y; //zalezy od funkcji
         }
+        public double mutujX()
+        {
+            return x +(-2 + 4 * rnd.NextDouble())/4.0;
+        }
+        public double mutujY()
+        {
+            return y + (-2 + 4 * rnd.NextDouble()) / 4.0;
+        }
     }
 }

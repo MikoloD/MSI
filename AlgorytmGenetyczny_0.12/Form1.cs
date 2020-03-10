@@ -38,27 +38,40 @@ namespace AlgorytmGenetyczny_0._12
 
             xlWorkSheet.Cells[1, 1] = "x";
             xlWorkSheet.Cells[1, 2] = "y";
-            xlWorkSheet.Cells[1, 3] = "z";
+            xlWorkSheet.Cells[1, 3] = "ym";
+            xlWorkSheet.Cells[1, 4] = "xm";
+            xlWorkSheet.Cells[1, 5] = "f";
 
             for (int i = 0; i < liczebnosc; i++)
             {
                 xlWorkSheet.Cells[i + 2, 1] = Populacja[i].x;
                 xlWorkSheet.Cells[i + 2, 2] = Populacja[i].y;
-                xlWorkSheet.Cells[i + 2, 3] = Populacja[i].f;
+                double a= Populacja[i].mutujX();
+                double b= Populacja[i].mutujY();
+                int j = 0;
+                if (Math.Abs(a) <= 2 && Math.Abs(b) <= 2)
+                {
+                    xlWorkSheet.Cells[i + 2 - j, 3] = b;
+                    xlWorkSheet.Cells[i + 2-j, 4] = a;
+                }
+                else j++;
+                xlWorkSheet.Cells[i + 2, 5] = Populacja[i].f;
             }
 
-
             ChartObjects xlCharts = (ChartObjects)xlWorkSheet.ChartObjects(Type.Missing);
-            ChartObject myChart = (ChartObject)xlCharts.Add(150, 50, 300, 250);
+            ChartObject myChart = xlCharts.Add(150, 50, 300, 250);
             Chart chartPage = myChart.Chart;
             Range chartRange;
 
-
-            chartRange = xlWorkSheet.get_Range("B2:B101", Type.Missing);
+            chartRange = xlWorkSheet.get_Range("B2:C101", Type.Missing);
             chartPage.SetSourceData(chartRange, misValue);
             chartPage.ChartType = XlChartType.xlXYScatter;
+
             var series = (Series)chartPage.SeriesCollection(1);
-            series.XValues = xlWorkSheet.get_Range("A2:A101", Type.Missing);
+            series.XValues = xlWorkSheet.get_Range("A2:A102", Type.Missing);
+            var series2 = (Series)chartPage.SeriesCollection(2);
+            series2.XValues = xlWorkSheet.get_Range("D2:D102", Type.Missing);
+
 
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName; // return the application.exe current folder
             string fileName = Path.Combine(path, "wykres.bmp");
