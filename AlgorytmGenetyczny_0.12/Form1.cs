@@ -72,7 +72,6 @@ namespace AlgorytmGenetyczny_0._12
             var series2 = (Series)chartPage.SeriesCollection(2);
             series2.XValues = xlWorkSheet.get_Range("D2:D102", Type.Missing);
 
-
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName; // return the application.exe current folder
             string fileName = Path.Combine(path, "wykres.bmp");
             string fileName2 = Path.Combine(path, "algorytm ewolucyjny");
@@ -85,6 +84,11 @@ namespace AlgorytmGenetyczny_0._12
             Marshal.ReleaseComObject(xlWorkBook);
             Marshal.ReleaseComObject(xlApp);
             
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
