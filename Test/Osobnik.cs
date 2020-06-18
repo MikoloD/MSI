@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlgorytmGenetyczny_0._12
+namespace Test
 {
     public class Osobnik
     {
