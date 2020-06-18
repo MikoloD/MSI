@@ -33,9 +33,7 @@ namespace AlgorytmGenetyczny_0._12
         public Form1()
         {
             InitializeComponent();
-
-            
-            
+ 
         }
         private void turniej()
         {
@@ -49,7 +47,7 @@ namespace AlgorytmGenetyczny_0._12
             }
             Populacja = PopulacjaNowa;
         }
-        private double sprawdzDziedzine(int i,double x)
+        private double sprawdzDziedzine(double x)
         {
             double wynik;
             do
@@ -65,8 +63,8 @@ namespace AlgorytmGenetyczny_0._12
         {
             for(int i=0;i<liczebnosc;i++)
             {
-                Populacja[i].x = sprawdzDziedzine(i,Populacja[i].x);
-                Populacja[i].y = sprawdzDziedzine(i,Populacja[i].y);
+                Populacja[i].x = sprawdzDziedzine(Populacja[i].x);
+                Populacja[i].y = sprawdzDziedzine(Populacja[i].y);
             }
         }
         public double fPop()
